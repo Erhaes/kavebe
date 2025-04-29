@@ -8,7 +8,7 @@
 
 <section class="bg-white dark:bg-gray-900">
     <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-        <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+        <div class="font-light text-gray-500 sm:text-lg dark:text-gray-200">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Tentang Kami</h2>
             <p class="mb-4">Laboratorium Teknik Sipil Unsoed berfungsi sebagai pusat pembelajaran praktis dan eksperimental yang dipergunakan oleh mahasiswa Fakultas Teknik Unsoed dan pelayanan untuk mitra dari luar Laboratorium Teknik Sipil Unsoed yang mencakup bidang Struktur dan Bahan Bangunan, Mekanika Tanah dan Hidraulika, Transportasi, Mekanika Keairan dan Teknik Lingkungan.</p>
             <p>Dengan fasilitas yang memadai dan didukung oleh tenaga ahli serta dosen-dosen berpengalaman, Laboratorium Teknik Sipil 
@@ -29,7 +29,7 @@
 {{-- Kata Pengantar --}}
 <section class="bg-white dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <div class="mx-auto text-center max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+        <div class="mx-auto text-center max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-200">
             <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">Kata Pengantar</h2>
             {{-- <p class="mb-4 font-light">Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes.</p> --}}
             <i>
@@ -47,11 +47,11 @@
 {{-- Visi Misi --}}
 <section class="bg-white dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+        <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-200">
             <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">Visi</h2>
             <p class="mb-4 font-medium">Menjadi laboratorium Teknik Sipil yang bermutu dan maju untuk mendukung kegiatan akademik, penelitian dan industri konstruksi sehingga dapat berkontribusi bagi pembangunan bangsa dan negara.</p>
         </div>
-        <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+        <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-200">
             <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">Misi</h2>
             {{-- <p class="mb-4 font-medium">Menjadi laboratorium Teknik Sipil yang bermutu dan maju untuk mendukung kegiatan akademik, penelitian dan industri konstruksi sehingga dapat berkontribusi bagi pembangunan bangsa dan negara.</p> --}}
             <ol class="list-decimal mb-4 pl-5 font-medium">
@@ -70,38 +70,38 @@
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
         <div class="mx-auto mb-8 max-w-screen-sm lg:mb-16">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Tim Kami</h2>
-            <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Explore the whole collection of open-source web components and elements built with the utility classes from Tailwind</p>
+            <p class="font-light text-gray-500 sm:text-xl dark:text-gray-200">Explore the whole collection of open-source web components and elements built with the utility classes from Tailwind</p>
         </div> 
         <div class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <div class="text-center text-gray-500 dark:text-gray-400">
+            <div class="text-center text-gray-500 dark:text-gray-200">
                 <img class="mx-auto mb-4 w-36 h-36 rounded-full" src="{{ asset('/images/pak-hery.jpg') }}" alt="Pak Hery">
                 <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Ir. Hery Awan Susanto., S.T.,M.T.
                 </h3>
                 <p>Kepala Laboratorium</p>
             </div>
-            <div class="text-center text-gray-500 dark:text-gray-400">
+            <div class="text-center text-gray-500 dark:text-gray-200">
                 <img class="mx-auto mb-4 w-36 h-36 rounded-full" src="{{ asset('/images/pak-dani.jpg') }}" alt="Pak Dani">
                 <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Ir. Dani Nugroho Saputra, S.Pd.T, M.Eng
                 </h3>
                 <p>Kepala Laboratorium</p>
             </div>
-            <div class="text-center text-gray-500 dark:text-gray-400">
+            <div class="text-center text-gray-500 dark:text-gray-200">
                 <img class="mx-auto mb-4 w-36 h-36 rounded-full" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Pak Dani">
                 <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Umigawati
                 </h3>
                 <p>Administrator</p>
             </div>
-            <div class="text-center text-gray-500 dark:text-gray-400">
+            <div class="text-center text-gray-500 dark:text-gray-200">
                 <img class="mx-auto mb-4 w-36 h-36 rounded-full" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Pak Dani">
                 <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Ghiffara Hasna Royanisa
                 </h3>
                 <p>Administrator</p>
             </div>
-            <div class="text-center text-gray-500 dark:text-gray-400">
+            <div class="text-center text-gray-500 dark:text-gray-200">
                 <img class="mx-auto mb-4 w-36 h-36 rounded-full" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Pak Dani">
                 <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Ferdiono
@@ -109,7 +109,7 @@
                 <p>Laboran/Teknisi</p>
             </div>
             
-            {{-- <div class="text-center text-gray-500 dark:text-gray-400">
+            {{-- <div class="text-center text-gray-500 dark:text-gray-200">
                 <img class="mx-auto mb-4 w-36 h-36 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/neil-sims.png" alt="Neil Avatar">
                 <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     <a href="#">Neil Sims</a>

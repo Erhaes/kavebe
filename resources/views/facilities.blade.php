@@ -11,7 +11,7 @@
             </div>
             <div class="grid gap-8 lg:grid-cols-2">
                 <div class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                    <a href="#">
+                    <a href="/fasilitas/detail">
                         <img src="{{ asset('/images/Ruang/Lab. Transport.jpeg') }}"
                             class="w-full h-75 object-cover rounded-2xl mb-5" alt="">
                         <h2 class="text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white">Laboratorium
