@@ -29,7 +29,7 @@
                     Klik pada gambar peralatan di bawah ini untuk melihat detail dan fungsi masing-masing alat.
                 </p>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" x-data="{ showModal: false }">
                     <!-- Alat 1 -->
                     <div>
                         <button type="button" data-modal-target="alat1Modal" data-modal-toggle="alat1Modal" class="w-full">
