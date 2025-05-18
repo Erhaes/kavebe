@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('judul');
             $table->string('slug');
             $table->text('konten');
-            $table->text('gambar');
+            // $table->text('gambar');
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('news_category_id')->constrained();
+            // $table->foreignId('news_category_id')->constrained();
             $table->timestamps();
         });
     }

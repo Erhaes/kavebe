@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('lembaga');
             // $table->text('keterangan');
-            $table->text('gambar');
-            $table->text('file');
+            // $table->text('gambar');
+            // $table->text('file');
             $table->foreignId('lab_id')->constrained();
             $table->timestamps();
         });

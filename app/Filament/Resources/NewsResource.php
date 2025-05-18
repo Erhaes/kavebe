@@ -19,7 +19,9 @@ use App\Models\NewsCategory;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 
 class NewsResource extends Resource
@@ -45,8 +47,9 @@ class NewsResource extends Resource
                     ->columnSpanFull(),
                 RichEditor::make('konten')
                     ->columnSpanFull(),
-                FileUpload::make('gambar')
-                    ->image(),
+                SpatieMediaLibraryFileUpload::make('foto')
+                    ->image()
+                    ->collection('foto_berita'),
                 Select::make('category_id')
                     ->searchable()
                     ->options(NewsCategory::all()->pluck('kategori', 'id'))
@@ -64,7 +67,8 @@ class NewsResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('judul'),
-                ImageColumn::make('gambar'),
+                SpatieMediaLibraryImageColumn::make('foto')
+                    ->collection('foto_berita'),
                 TextColumn::make('konten')
                     ->limit(40)
             ])

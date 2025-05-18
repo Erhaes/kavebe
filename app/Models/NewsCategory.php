@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class NewsCategory extends Model
@@ -12,7 +13,7 @@ class NewsCategory extends Model
         'deskripsi',
     ];
 
-    public function news():HasMany{
-        return $this->hasMany(News::class);
+    public function news():BelongsToMany{
+        return $this->belongsToMany(News::class, 'newscat');
     }
 }

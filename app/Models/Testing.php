@@ -15,7 +15,7 @@ class Testing extends Model
         'harga',
         'catatan',
         'sampel',
-        'gambar',
+        // 'gambar',
         'facilities_id',
         'equipment_id'
     ];

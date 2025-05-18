@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\NewsCategoryResource\Pages;
 use App\Filament\Resources\NewsCategoryResource\RelationManagers;
+use Filament\Tables\Columns\TextColumn;
 
 class NewsCategoryResource extends Resource
 {
@@ -43,7 +44,9 @@ class NewsCategoryResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('kategori')
+                    ->label('Nama Kategori'),
+                TextColumn::make('slug'),
             ])
             ->filters([
                 //

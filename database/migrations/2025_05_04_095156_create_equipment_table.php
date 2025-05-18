@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama_alat');
             $table->string('slug');
             $table->text('keterangan_alat');
-            $table->text('gambar_alat');
+            // $table->text('gambar_alat');
             $table->foreignId('facility_id')->constrained();
             $table->timestamps();
         });

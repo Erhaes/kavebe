@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('harga');
             $table->text('catatan')->nullable();
             $table->string('sampel')->nullable();
-            $table->text('gambar')->nullable();
+            // $table->text('gambar')->nullable();
             $table->foreignId('facility_id')->constrained();
             $table->foreignId('equipment_id')->nullable()->constrained();
             $table->timestamps();

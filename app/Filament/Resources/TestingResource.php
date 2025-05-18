@@ -21,7 +21,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\TestingResource\RelationManagers;
 use App\Models\Equipment;
 use Dom\Text;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 
 class TestingResource extends Resource
@@ -48,8 +50,9 @@ class TestingResource extends Resource
                 TextInput::make('catatan'),
                 TextInput::make('sampel')
                     ->integer(),
-                FileUpload::make('gambar')
+                SpatieMediaLibraryFileUpload::make('foto_pengujian')
                     ->image()
+                    ->collection('foto_pengujian')
                     ->preserveFilenames(),
                 Select::make('facility_id')
                     ->options(Facility::all()->pluck('nama_lab', 'id'))
@@ -68,7 +71,8 @@ class TestingResource extends Resource
                     ->label('Nama'),
                 TextColumn::make('keterangan')
                     ->limit(60),
-                ImageColumn::make('gambar'),
+                SpatieMediaLibraryImageColumn::make('foto_pengujian')
+                    ->collection('foto_pengujian'),
             ])
             ->filters([
                 //

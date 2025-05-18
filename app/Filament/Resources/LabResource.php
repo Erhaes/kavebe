@@ -17,7 +17,9 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\LabResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\LabResource\RelationManagers;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 
 class LabResource extends Resource
@@ -43,17 +45,15 @@ class LabResource extends Resource
                 RichEditor::make('keterangan')
                     ->columnSpanFull()
                     ->required(),
-                FileUpload::make('gambar')
+                SpatieMediaLibraryFileUpload::make('foto')
+                    ->collection('foto_lab')
                     ->image()
                     ->preserveFilenames()
-                    ->disk('public')
-                    ->visibility('public')
                     ->maxSize(3072),
-                FileUpload::make('video')
+                SpatieMediaLibraryFileUpload::make('video')
+                    ->collection('videolab')
                     ->preserveFilenames()
                     ->maxSize(10240)
-                    ->disk('public')
-                    ->visibility('public')
                     ->acceptedFileTypes([
                         'video/mp4', 
                         'video/x-msvideo', // AVI
@@ -79,9 +79,8 @@ class LabResource extends Resource
                 TextColumn::make('keterangan')
                     ->label('Deskripsi Lab')
                     ->limit(60),
-                ImageColumn::make('gambar')
-                ->disk('public')
-                ->visibility('public'),
+                SpatieMediaLibraryImageColumn::make('foto')
+                    ->collection('foto_lab')
             ])
             ->filters([
                 //

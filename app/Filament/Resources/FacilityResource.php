@@ -19,7 +19,9 @@ use App\Models\Lab;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 
 class FacilityResource extends Resource
@@ -45,12 +47,15 @@ class FacilityResource extends Resource
                 RichEditor::make('keterangan')
                     ->columnSpanFull()
                     ->required(),
-                FileUpload::make('gambar')
+                SpatieMediaLibraryFileUpload::make('foto')
                     ->image()
+                    ->collection('foto_fasilitas')
                     ->maxSize(3072)
                     ->preserveFilenames(),
                 Select::make('lab_id')
-                    ->options(Lab::all()->pluck('nama', 'id'))
+                    // ->options(Lab::all()->pluck('nama', 'id'))
+                    ->relationship(name:'lab',titleAttribute:'nama',ignoreRecord:true)
+                    ->preload()
                     ->searchable(),
             ]);
     }
@@ -61,9 +66,8 @@ class FacilityResource extends Resource
             ->columns([
                 TextColumn::make('nama_lab')
                     ->label('Nama Ruang'),
-                ImageColumn::make('gambar')
-                    ->disk('public')
-                    ->visibility('public')
+                SpatieMediaLibraryImageColumn::make('foto')
+                    ->collection('foto_fasilitas'),
             ])
             ->filters([
                 //

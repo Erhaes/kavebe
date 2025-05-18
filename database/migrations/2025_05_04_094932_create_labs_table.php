@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('slug');
             // $table->string('slogan');
             $table->text('keterangan');
-            $table->text('gambar');
-            $table->text('video');
+            // $table->text('gambar');
+            // $table->text('video');
             $table->text('visi');
             $table->text('misi');
             $table->timestamps();

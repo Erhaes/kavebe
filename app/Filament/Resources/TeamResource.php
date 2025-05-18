@@ -6,6 +6,9 @@ use App\Filament\Resources\TeamResource\Pages;
 use App\Filament\Resources\TeamResource\RelationManagers;
 use App\Models\Team;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,7 +26,13 @@ class TeamResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('nama'),
+                SpatieMediaLibraryFileUpload::make('foto_anggota')
+                    ->collection('foto_anggota')
+                    ->image(),
+                Select::make('user_id')
+                    ->relationship(name: 'user', titleAttribute: 'name')
+                    ->searchable(),
             ]);
     }
 

@@ -19,7 +19,9 @@ use App\Models\Facility;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 
 class EquipmentResource extends Resource
@@ -45,10 +47,9 @@ class EquipmentResource extends Resource
                     ->readOnly(),
                 RichEditor::make('keterangan_alat')
                     ->columnSpanFull(),
-                FileUpload::make('gambar_alat')
+                SpatieMediaLibraryFileUpload::make('foto_alat')
                     ->image()
-                    ->disk('public')
-                    ->visibility('public')
+                    ->collection('foto_alat')
                     ->columnSpanFull(),
                 Select::make('facility_id')
                     ->options(Facility::all()->pluck('nama_lab', 'id'))
@@ -62,12 +63,8 @@ class EquipmentResource extends Resource
             ->columns([
                 TextColumn::make('nama_alat')
                     ->label('Nama Alat'),
-                ImageColumn::make('gambar_alat')
-                    ->disk('public')
-                    ->visibility('public'),
-                // TextColumn::make('facility_id')
-                //     ->label('Lab')
-                //     ->relationship('facility', 'nama_lab')
+                SpatieMediaLibraryImageColumn::make('foto_alat')
+                    ->collection('foto_alat')
             ])
             ->filters([
                 //

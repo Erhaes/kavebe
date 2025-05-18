@@ -9,7 +9,7 @@ class Team extends Model
 {
     protected $fillable = [
         'nama',
-        'gambar',
+        // 'gambar',
         'user_id',
         'position_id'
     ];

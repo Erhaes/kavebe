@@ -30,7 +30,12 @@
         <img class="w-full hidden dark:block rounded-2xl" src="{{ asset('/images/gedung-lab.jpg') }}" alt="dashboard image">
         <div class="mt-4 md:mt-0">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Tentang Kami</h2>
-            <p class="mb-6 font-light text-gray-800 md:text-lg dark:text-gray-200">Laboratorium Teknik Sipil Unsoed berfungsi sebagai pusat pembelajaran praktis dan eksperimental yang dipergunakan oleh mahasiswa Fakultas Teknik Unsoed dan pelayanan untuk mitra dari luar Laboratorium Teknik Sipil Unsoed yang mencakup bidang Struktur dan Bahan Bangunan, Mekanika Tanah dan Hidraulika, Transportasi, Mekanika Keairan dan Teknik Lingkungan.</p>
+            <div class="mb-6 font-light text-gray-800 md:text-lg dark:text-gray-200 text-justify">
+                {!! Str::of($infolab->keterangan)
+                    ->before('</p>')
+                    ->append('</p>')
+                    ->sanitizeHtml() !!}
+            </div>
             <a href="{{ route('profile') }}" class="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
                 Selengkapnya
                 <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
@@ -95,39 +100,36 @@
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Akreditasi & Sertifikasi</h2>
             <p class="font-light text-gray-800 sm:text-xl dark:text-gray-200">Akreditasi dan Sertifikasi yang telah diperoleh Laboratorium Teknik SIpil Unsoed hingga saat ini.</p>
         </div> 
-        <div class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {{-- <div class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"> --}}
+        {{-- <div class="grid gap-8 lg:gap-16 
+            @if($hitungsertif === 1) 
+                grid-cols-1 max-w-md mx-auto
+            @elseif($hitungsertif % 2 == 0) 
+                sm:grid-cols-2
+            @endif">
+            @foreach ($sertifikasis as $sertifikasi )
+                <div class="text-center text-gray-800 dark:text-gray-200">
+                    <img class="mx-auto mb-4 w-36 h-36" src="{{ $sertifikasi->getFirstMediaUrl('foto_sertifikat') }}" alt="{{ $sertifikasi->lembaga }}">
+                    <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        {{ $sertifikasi->lembaga }}
+                    </h3>
+                    <a href="{{ $sertifikasi->getFirstMediaUrl('file_sertifikat') }}" class="text-blue-700 underline">Unduh</a>
+                </div>
+            @endforeach
+        </div> --}}
+        @foreach ($sertifikasis->chunk(2) as $row)
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            @foreach ($row as $sertifikasi)
             <div class="text-center text-gray-800 dark:text-gray-200">
-                <img class="mx-auto mb-4 w-36 h-36" src="{{ asset('/files/sert_penyet_2023_PYT237206123.pdf.jpg') }}" alt="PII">
+                <img class="mx-auto mb-4 w-36 h-36" src="{{ $sertifikasi->getFirstMediaUrl('foto_sertifikat') }}" alt="{{ $sertifikasi->lembaga }}">
                 <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    LAM Teknik PII
+                    {{ $sertifikasi->lembaga }}
                 </h3>
-                {{-- <p>CEO/Co-founder</p> --}}
-                <a href="{{ asset('/files/sert_penyet_2023_PYT237206123.pdf') }}" class="text-blue-700 underline">Unduh</a>
+                <a href="{{ $sertifikasi->getFirstMediaUrl('file_sertifikat') }}" class="text-blue-700 underline">Unduh</a>
             </div>
-            <div class="text-center text-gray-800 dark:text-gray-200">
-                <img class="mx-auto mb-4 w-36 h-36" src="{{ asset('/files/Sertifikat-IABEE-Teknik-Sipil-FT_2022.jpeg') }}" alt="IABEE">
-                <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    IABEE
-                </h3>
-                {{-- <p>CTO/Co-founder</p> --}}
-                <a href="{{ asset('/files/Sertifikat-IABEE-Teknik-Sipil-FT_2022.jpeg') }}" class="text-blue-700 underline">Unduh</a>
-            </div>
-            {{-- <div class="text-center text-gray-800 dark:text-gray-200">
-                <img class="mx-auto mb-4 w-36 h-36" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Jese Avatar">
-                <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    <a href="#">Jese Leos</a>
-                </h3>
-                <p>SEO & Marketing</p>
-            </div>
-            <div class="text-center text-gray-800 dark:text-gray-200">
-                <img class="mx-auto mb-4 w-36 h-36" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/joseph-mcfall.png" alt="Joseph Avatar">
-                <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    <a href="#">Joseph Mcfall</a>
-                </h3>
-                <p>Sales</p>
-            </div> --}}
-            
-        </div>  
+        @endforeach
+        </div>
+        @endforeach  
     </div>
   </section>
   {{-- End Akreditasi --}}
@@ -152,8 +154,6 @@
                     </div>
                     <div class="ml-3">
                         <p class="text-gray-800 dark:text-gray-200">
-                            {{-- Laboratorium Teknik Sipil<br>
-                            Fakultas Teknik Universitas Jenderal Soedirman<br> --}}
                             Jl. Mayjend Sungkono KM 5, Blater, Purbalingga, Jawa Tengah 53371
                         </p>
                     </div>

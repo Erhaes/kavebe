@@ -17,7 +17,8 @@ return new class extends Migration
             $table->text('abstrak');
             $table->integer('tahun');
             $table->text('link')->unique();
-            $table->foreignId('user_id')->constrained();
+            // $table->foreignId('user_id')->constrained();
+            
             $table->timestamps();
         });
     }

@@ -2,16 +2,20 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\IntroductionResource\Pages;
-use App\Filament\Resources\IntroductionResource\RelationManagers;
-use App\Models\Introduction;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\Introduction;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\IntroductionResource\Pages;
+use App\Filament\Resources\IntroductionResource\RelationManagers;
+use App\Models\Team;
+use Filament\Forms\Components\RichEditor;
+use Filament\Tables\Columns\TextColumn;
 
 class IntroductionResource extends Resource
 {
@@ -27,7 +31,11 @@ class IntroductionResource extends Resource
     {
         return $form
             ->schema([
-                //
+                RichEditor::make('pengantar')
+                    ->columnSpanFull(),
+                Select::make('team_id')
+                    ->options(Team::all()->pluck('nama', 'id'))
+                    ->searchable(),
             ]);
     }
 
@@ -35,7 +43,7 @@ class IntroductionResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('pengantar')
             ])
             ->filters([
                 //

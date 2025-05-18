@@ -7,11 +7,13 @@ use App\Filament\Resources\ContactResource\RelationManagers;
 use App\Models\Contact;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -31,8 +33,9 @@ class ContactResource extends Resource
                     ->columnSpanFull()
                     ->label('Alamat kontak')
                     ->required(),
-                FileUpload::make('icon')
-                    ->image(),
+                SpatieMediaLibraryFileUpload::make('icon')
+                    ->image()
+                    ->collection('icon_kontak'),
                 TextInput::make('jenis_kontak')
                     ->label('Link Kontak')
                     ->columnSpanFull(),
@@ -45,7 +48,8 @@ class ContactResource extends Resource
             ->columns([
                 TextColumn::make('kontak')
                     ->label('Alamat Kontak'),
-                ImageColumn::make('icon'),
+                SpatieMediaLibraryImageColumn::make('icon')
+                    ->collection('iconkontak'),
             ])
             ->filters([
                 //

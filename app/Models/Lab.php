@@ -4,16 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Lab extends Model
+class Lab extends Model implements HasMedia
 {
+    use InteractsWithMedia;
     protected $fillable = [
         'nama',
         // 'slogan',
         'slug',
         'keterangan',
-        'gambar',
-        'video',
+        // 'gambar',
+        // 'video',
         'visi',
         'misi',
     ];

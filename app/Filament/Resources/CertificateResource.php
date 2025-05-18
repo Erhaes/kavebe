@@ -16,7 +16,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CertificateResource\Pages;
 use App\Filament\Resources\CertificateResource\RelationManagers;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 
 class CertificateResource extends Resource
@@ -32,12 +34,14 @@ class CertificateResource extends Resource
                 TextInput::make('lembaga')
                     ->columnSpanFull()
                     ->required(),
-                FileUpload::make('gambar')
+                SpatieMediaLibraryFileUpload::make('gambar')
                     ->label('Gambar Sertifikasi')
                     ->preserveFilenames()
+                    ->collection('foto_sertifikat')
                     ->image(),
-                FileUpload::make('gambar')
+                SpatieMediaLibraryFileUpload::make('file')
                     ->label('File Serifikasi')
+                    ->collection('file_sertifikat')
                     ->preserveFilenames(),
                 Select::make('lab_id')
                     ->options(Lab::all()->pluck('nama', 'id'))
@@ -51,7 +55,8 @@ class CertificateResource extends Resource
             ->columns([
                 TextColumn::make('lembaga')
                     ->label('Lembaga'),
-                ImageColumn::make('gambar')
+                SpatieMediaLibraryImageColumn::make('gambar')
+                    ->collection('foto_sertifikat')
                     ->label('Sertifikasi'),
             ])
             ->filters([

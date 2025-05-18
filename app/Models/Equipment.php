@@ -13,7 +13,7 @@ class Equipment extends Model
         'keterangan',
         'slug',
         'keterangan_alat',
-        'gambar_alat',
+        // 'gambar_alat',
         'facilities_id'
     ];
 
