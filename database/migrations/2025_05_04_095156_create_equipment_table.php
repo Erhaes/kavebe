@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug');
             $table->text('keterangan_alat');
             $table->text('gambar_alat');
-            $table->foreignId('facilities_id')->constrained();
+            $table->foreignId('facility_id')->constrained();
             $table->timestamps();
         });
     }

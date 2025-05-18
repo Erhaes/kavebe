@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('catatan')->nullable();
             $table->string('sampel')->nullable();
             $table->text('gambar')->nullable();
-            $table->foreignId('facilities_id')->constrained();
+            $table->foreignId('facility_id')->constrained();
             $table->foreignId('equipment_id')->nullable()->constrained();
             $table->timestamps();
         });

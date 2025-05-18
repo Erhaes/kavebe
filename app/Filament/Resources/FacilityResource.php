@@ -2,31 +2,33 @@
 
 namespace App\Filament\Resources;
 
-use App\Models\Lab;
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Set;
+use App\Models\Facility;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\TextInput;
+use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\FacilityResource\Pages;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\FacilityResource\RelationManagers;
+use App\Models\Lab;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
-use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\LabResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\LabResource\RelationManagers;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 
-class LabResource extends Resource
+class FacilityResource extends Resource
 {
-    protected static ?string $model = Lab::class;
+    protected static ?string $model = Facility::class;
 
-    protected static ?string $navigationGroup = 'Deskripsi Lab';
+    protected static ?string $navigationGroup = 'Fasilitas';
 
-    protected static ?string $navigationLabel = 'Tabel Lab';
+    protected static ?string $navigationLabel = 'Ruang Lab';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -34,7 +36,7 @@ class LabResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('nama')
+                TextInput::make('nama_lab')
                     ->columnSpanFull()
                     ->required()
                     ->live(onBlur: true)
@@ -45,28 +47,11 @@ class LabResource extends Resource
                     ->required(),
                 FileUpload::make('gambar')
                     ->image()
-                    ->preserveFilenames()
-                    ->disk('public')
-                    ->visibility('public')
-                    ->maxSize(3072),
-                FileUpload::make('video')
-                    ->preserveFilenames()
-                    ->maxSize(10240)
-                    ->disk('public')
-                    ->visibility('public')
-                    ->acceptedFileTypes([
-                        'video/mp4', 
-                        'video/x-msvideo', // AVI
-                        'video/quicktime', // MOV
-                        'video/webm', 
-                        'video/mpeg'
-                    ]),
-                RichEditor::make('visi')
-                    ->columnSpanFull()
-                    ->required(),
-                RichEditor::make('misi')
-                    ->columnSpanFull()
-                    ->required(),
+                    ->maxSize(3072)
+                    ->preserveFilenames(),
+                Select::make('lab_id')
+                    ->options(Lab::all()->pluck('nama', 'id'))
+                    ->searchable(),
             ]);
     }
 
@@ -74,14 +59,11 @@ class LabResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama')
-                    ->label('Nama Lab'),
-                TextColumn::make('keterangan')
-                    ->label('Deskripsi Lab')
-                    ->limit(60),
+                TextColumn::make('nama_lab')
+                    ->label('Nama Ruang'),
                 ImageColumn::make('gambar')
-                ->disk('public')
-                ->visibility('public'),
+                    ->disk('public')
+                    ->visibility('public')
             ])
             ->filters([
                 //
@@ -89,6 +71,7 @@ class LabResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -107,10 +90,10 @@ class LabResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListLabs::route('/'),
-            'create' => Pages\CreateLab::route('/create'),
-            'view' => Pages\ViewLab::route('/{record}'),
-            'edit' => Pages\EditLab::route('/{record}/edit'),
+            'index' => Pages\ListFacilities::route('/'),
+            'create' => Pages\CreateFacility::route('/create'),
+            'view' => Pages\ViewFacility::route('/{record}'),
+            'edit' => Pages\EditFacility::route('/{record}/edit'),
         ];
     }
 }

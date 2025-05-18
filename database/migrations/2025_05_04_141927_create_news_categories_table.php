@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('news_categories', function (Blueprint $table) {
             $table->id();
             $table->string('kategori')->unique();
-            $table->text('deskripsi');
+            $table->text('slug');
             $table->timestamps();
         });
     }
