@@ -15,12 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('slug');
-            // $table->string('slogan');
+            $table->string('cta');
             $table->text('keterangan');
             // $table->text('gambar');
             // $table->text('video');
             $table->text('visi');
             $table->text('misi');
+            $table->text('link_maps');
             $table->timestamps();
         });
     }

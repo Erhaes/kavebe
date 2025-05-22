@@ -38,11 +38,20 @@ class CertificateResource extends Resource
                     ->label('Gambar Sertifikasi')
                     ->preserveFilenames()
                     ->collection('foto_sertifikat')
+                    ->maxSize(3072)
+                    ->enableDownload()
+                    ->enableOpen()
+                    ->deleteUploadedFileUsing(null)
                     ->image(),
                 SpatieMediaLibraryFileUpload::make('file')
                     ->label('File Serifikasi')
                     ->collection('file_sertifikat')
-                    ->preserveFilenames(),
+                    ->preserveFilenames()
+                    ->maxSize(5120)
+                    ->enableDownload()
+                    ->enableOpen()
+                    ->deleteUploadedFileUsing(null)
+                    ->acceptedFileTypes(['application/pdf']),
                 Select::make('lab_id')
                     ->options(Lab::all()->pluck('nama', 'id'))
                     ->searchable(),

@@ -50,6 +50,11 @@ class EquipmentResource extends Resource
                 SpatieMediaLibraryFileUpload::make('foto_alat')
                     ->image()
                     ->collection('foto_alat')
+                    ->maxSize(3072)
+                    ->preserveFilenames()
+                    ->enableDownload()
+                    ->enableOpen()
+                    ->deleteUploadedFileUsing(null)
                     ->columnSpanFull(),
                 Select::make('facility_id')
                     ->options(Facility::all()->pluck('nama_lab', 'id'))

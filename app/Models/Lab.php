@@ -12,7 +12,7 @@ class Lab extends Model implements HasMedia
     use InteractsWithMedia;
     protected $fillable = [
         'nama',
-        // 'slogan',
+        'cta',
         'slug',
         'keterangan',
         // 'gambar',
@@ -31,5 +31,17 @@ class Lab extends Model implements HasMedia
 
     public function facilities():HasMany{
         return $this->hasMany(Facility::class);
+    }
+    
+    /**
+     * Register media collections for the model
+     */
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('foto_lab')
+            ->singleFile(); // Makes it a single file collection
+            
+        $this->addMediaCollection('videolab')
+            ->singleFile();
     }
 }

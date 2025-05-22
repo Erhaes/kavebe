@@ -21,4 +21,16 @@ class Certificate extends Model implements HasMedia
     public function lab():BelongsTo{
         return $this->belongsTo(Lab::class);
     }
+    
+    /**
+     * Register media collections for the model
+     */
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('foto_sertifikat')
+            ->singleFile(); // Makes it a single file collection
+            
+        $this->addMediaCollection('file_sertifikat')
+            ->singleFile();
+    }
 }

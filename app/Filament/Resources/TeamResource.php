@@ -26,12 +26,22 @@ class TeamResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('nama'),
+                TextInput::make('nama')
+                    ->required(),
                 SpatieMediaLibraryFileUpload::make('foto_anggota')
                     ->collection('foto_anggota')
-                    ->image(),
+                    ->image()
+                    ->maxSize(3072)
+                    ->preserveFilenames()
+                    ->enableDownload()
+                    ->enableOpen()
+                    ->deleteUploadedFileUsing(null),
                 Select::make('user_id')
                     ->relationship(name: 'user', titleAttribute: 'name')
+                    ->searchable(),
+                Select::make('position_id')
+                    ->relationship(name: 'position', titleAttribute: 'name')
+                    ->required()
                     ->searchable(),
             ]);
     }
@@ -40,7 +50,14 @@ class TeamResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('nama')
+                    ->searchable(),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('foto_anggota')
+                    ->collection('foto_anggota'),
+                Tables\Columns\TextColumn::make('position.name')
+                    ->label('Position'),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('User')
             ])
             ->filters([
                 //

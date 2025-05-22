@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Testing extends Model
+class Testing extends Model implements HasMedia
 {
+    use InteractsWithMedia;
+    
     protected $fillable = [
         'nama_testing',
         'slug',
@@ -26,5 +30,14 @@ class Testing extends Model
 
     public function equipment():BelongsTo{
         return $this->belongsTo(Equipment::class);
+    }
+    
+    /**
+     * Register media collections for the model
+     */
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('foto_pengujian')
+            ->singleFile(); // Makes it a single file collection
     }
 }

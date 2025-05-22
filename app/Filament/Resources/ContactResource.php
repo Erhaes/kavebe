@@ -2,23 +2,24 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ContactResource\Pages;
-use App\Filament\Resources\ContactResource\RelationManagers;
-use App\Models\Contact;
 use Filament\Forms;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Tables\Columns\TextColumn;
+use App\Models\Contact;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Checkbox;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\ContactResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use App\Filament\Resources\ContactResource\RelationManagers;
+use Filament\Forms\Get;
 class ContactResource extends Resource
 {
     protected static ?string $model = Contact::class;
@@ -36,9 +37,14 @@ class ContactResource extends Resource
                 SpatieMediaLibraryFileUpload::make('icon')
                     ->image()
                     ->collection('icon_kontak'),
-                TextInput::make('jenis_kontak')
-                    ->label('Link Kontak')
+                Checkbox::make('sosial_media')
+                    ->default(0)
+                    ->label('Sosial Media')
                     ->columnSpanFull(),
+                TextInput::make('link')
+                    ->label('Link Sosial Media')
+                    ->columnSpanFull()
+                    ->required(fn (Get $get) => $get('sosial_media') === 1),
             ]);
     }
 

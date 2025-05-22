@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
+use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\NewsResource\Pages;
@@ -49,16 +50,23 @@ class NewsResource extends Resource
                     ->columnSpanFull(),
                 SpatieMediaLibraryFileUpload::make('foto')
                     ->image()
-                    ->collection('foto_berita'),
-                Select::make('category_id')
+                    ->collection('foto_berita')
+                    ->maxSize(3072)
+                    ->preserveFilenames()
+                    ->enableDownload()
+                    ->enableOpen()
+                    ->deleteUploadedFileUsing(null),
+                Select::make('newscategories')
+                    ->relationship('newscategories', 'kategori')
+                    ->multiple()
+                    ->preload()
                     ->searchable()
-                    ->options(NewsCategory::all()->pluck('kategori', 'id'))
             ]);
     }
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['user_id'] = auth()->id();
+        $data['user_id'] = Auth::id();
         return $data;
     }
 

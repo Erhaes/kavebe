@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->string('kontak');
-            // $table->string('icon');
-            $table->string('jenis_kontak')->nullable();
+            $table->text('icon');
+            // $table->string('jenis_kontak')->nullable();
+            $table->boolean('sosial_media')->default(0);
+            $table->string('link')->nullable();
             $table->foreignId('lab_id')->constrained();
             $table->timestamps();
         });

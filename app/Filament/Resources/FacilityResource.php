@@ -51,7 +51,10 @@ class FacilityResource extends Resource
                     ->image()
                     ->collection('foto_fasilitas')
                     ->maxSize(3072)
-                    ->preserveFilenames(),
+                    ->preserveFilenames()
+                    ->enableDownload()
+                    ->enableOpen()
+                    ->deleteUploadedFileUsing(null),
                 Select::make('lab_id')
                     // ->options(Lab::all()->pluck('nama', 'id'))
                     ->relationship(name:'lab',titleAttribute:'nama',ignoreRecord:true)

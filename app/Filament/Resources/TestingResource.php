@@ -53,7 +53,11 @@ class TestingResource extends Resource
                 SpatieMediaLibraryFileUpload::make('foto_pengujian')
                     ->image()
                     ->collection('foto_pengujian')
-                    ->preserveFilenames(),
+                    ->maxSize(3072)
+                    ->preserveFilenames()
+                    ->enableDownload()
+                    ->enableOpen()
+                    ->deleteUploadedFileUsing(null),
                 Select::make('facility_id')
                     ->options(Facility::all()->pluck('nama_lab', 'id'))
                     ->searchable(),

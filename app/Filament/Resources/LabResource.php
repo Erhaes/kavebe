@@ -42,6 +42,8 @@ class LabResource extends Resource
                     ->live(onBlur: true)
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
                 TextInput::make('slug'),
+                TextInput::make('cta')
+                    ->columnSpanFull(),
                 RichEditor::make('keterangan')
                     ->columnSpanFull()
                     ->required(),
@@ -49,11 +51,17 @@ class LabResource extends Resource
                     ->collection('foto_lab')
                     ->image()
                     ->preserveFilenames()
-                    ->maxSize(3072),
+                    ->maxSize(3072)
+                    ->enableDownload()
+                    ->enableOpen()
+                    ->deleteUploadedFileUsing(null),
                 SpatieMediaLibraryFileUpload::make('video')
                     ->collection('videolab')
                     ->preserveFilenames()
                     ->maxSize(10240)
+                    ->enableDownload()
+                    ->enableOpen()
+                    ->deleteUploadedFileUsing(null)
                     ->acceptedFileTypes([
                         'video/mp4', 
                         'video/x-msvideo', // AVI
@@ -67,6 +75,8 @@ class LabResource extends Resource
                 RichEditor::make('misi')
                     ->columnSpanFull()
                     ->required(),
+                TextInput::make('link_maps')
+                    ->columnSpanFull(),
             ]);
     }
 
