@@ -1,22 +1,17 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\FacilityController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/tentang', function () {
-    return view('profile');
-})->name('profile');
+Route::get('/tentang', [AboutController::class, 'index'])->name('profile');
 
-Route::get('/fasilitas', function () {
-    return view('facilities');
-})->name('facilities');
-
-Route::get('/fasilitas/detail', function () {
-    return view('lablist');
-})->name('labdetail');
+Route::get('/fasilitas', [FacilityController::class, 'index'])->name('facilities');
+Route::get('/fasilitas/{slug}', [FacilityController::class, 'show'])->name('facilities.detail');
 
 Route::get('/berita', function () {
     return view('news');

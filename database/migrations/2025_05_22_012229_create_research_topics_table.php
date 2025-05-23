@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('news_categories', function (Blueprint $table) {
+        Schema::create('research_topics', function (Blueprint $table) {
             $table->id();
-            $table->string('kategori')->unique();
-            $table->text('slug')->unique();
+            $table->string('topik');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('news_categories');
+        Schema::dropIfExists('research_topics');
     }
 };
