@@ -23,4 +23,8 @@ class Research extends Model
     public function users():BelongsToMany{
         return $this->belongsToMany(User::class, 'researchuser');
     }
+
+    public function topics():BelongsToMany{
+        return $this->belongsToMany(ResearchTopic::class, 'research_topic');
+    }
 }
