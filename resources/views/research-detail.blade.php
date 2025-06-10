@@ -80,7 +80,7 @@
                     @if($research->link)
                     <div class="mb-6">
                         <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Link Publikasi</h2>
-                        <a href="{{ $research->link }}" target="_blank" class="text-blue-600 hover:underline dark:text-blue-500">
+                        <a href="{{ $research->link }}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline dark:text-blue-500">
                             {{ $research->link }}
                         </a>
                     </div>
