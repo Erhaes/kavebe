@@ -17,7 +17,15 @@ class DatabaseSeeder extends Seeder
 
         $this->call(
             [
-                UserSeeder::class
+                UserSeeder::class,
+                FacilitySeeder::class,
+                EquipmentSeeder::class,
+                CertificateSeeder::class,
+                ContactSeeder::class,
+                NewsCategorySeeder::class,
+                PositionSeeder::class, // Tambahkan ini
+                IntroductionSeeder::class, // Tambahkan ini
+                // Tambahkan seeder lain yang sudah Anda buat atau akan buat di sini
             ]
             );
     }
